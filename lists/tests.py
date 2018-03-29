@@ -4,11 +4,6 @@ from django.http import HttpRequest
 
 from lists.views import home_page
 
-#
-# class SmokeTest(TestCase):
-#
-#     def test_bad_maths(self):
-#         self.assertEqual(1+1, 3)
 
 class HomePageTest(TestCase):
 
