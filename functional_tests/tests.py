@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.keys import Keys
 from django.test import LiveServerTestCase
 import time
@@ -10,8 +11,12 @@ MAX_WAIT = 10
 
 class NewVisitorTest(LiveServerTestCase):
 
+    options = Options()
+    options.add_argument('-headless')
+
     def setUp(self):
-        self.browser = webdriver.Firefox()
+
+        self.browser = webdriver.Firefox(firefox_options=self.options)
 
     def tearDown(self):
         self.browser.quit()
@@ -93,7 +98,7 @@ class NewVisitorTest(LiveServerTestCase):
         ## of Edith's is coming through from cookies etc
 
         self.browser.quit()
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(firefox_options=self.options)
 
         # Francis visits the home page.  There is no sign of Edith's
         # list
